@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-st.title("데이터 시각화")
+st.title("데이터 시각화(연습)")
 
 st.write('데이터에 따른 시각화 ')
 csv_file = st.file_uploader(label = "임의의 데이터를 업로드해주세요. 단, csv 파일만 가능합니다. ")
