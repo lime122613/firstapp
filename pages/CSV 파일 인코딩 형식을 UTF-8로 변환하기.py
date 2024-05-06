@@ -51,11 +51,14 @@ if uploaded_files:
 
     csv = convert_df(data)
 
+    # 업로드된 파일의 확장자를 제거한 후 변환된 파일명에 .csv 확장자 추가
+    file_name = '(utf-8)' + uploaded_file.name.replace('.csv', '') + '.csv'
+
     st.write('📝 업로드한 데이터의 인코딩 형식은',result['encoding'],'입니다.')
     st.write("-----------------------------------------------------")
     st.download_button(
         label="변환된 CSV 파일 다운로드!",
         data=csv,
-        file_name='(utf-8)' + uploaded_file.name + '.csv',
+        file_name= file_name,
         mime='text/csv',
     )
