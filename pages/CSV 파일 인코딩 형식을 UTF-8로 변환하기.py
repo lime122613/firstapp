@@ -29,8 +29,9 @@ import streamlit as st
 import pandas as pd
 import chardet
 
-st.title("CSV 파일 인코딩 변환")
+st.title("💻 CSV 파일 인코딩 변환")
 st.write("CSV 파일을 불러왔을 때 에러가 난다면 인코딩 형식이 다를 수 있습니다. UTF-8 형식으로 변환합시다!")
+st.write("-----------------------------------------------------")
 
 uploaded_files = st.file_uploader("변환하고 싶은 CSV 파일을 업로드해주세요.", accept_multiple_files=True)
 if uploaded_files:
@@ -41,7 +42,7 @@ if uploaded_files:
         result = chardet.detect(raw_data)
         # 추측된 인코딩으로 CSV 파일 읽기
         data = pd.read_csv(uploaded_file, encoding=result['encoding'])
-        st.write('💻 상위 5개 데이터 출력')
+        st.write('📝 **상위 5개 데이터 출력**')
         st.write(data.head(5))
         
 
@@ -54,10 +55,10 @@ if uploaded_files:
     # 업로드된 파일의 확장자를 제거한 후 변환된 파일명에 .csv 확장자 추가
     file_name = '(utf-8)' + uploaded_file.name.replace('.csv', '') + '.csv'
 
-    st.write('📝 업로드한 데이터의 인코딩 형식은',result['encoding'],'입니다.')
+    st.write('📢**업로드한 데이터의 인코딩 형식은',result['encoding'],'입니다!**')
     st.write("-----------------------------------------------------")
     st.download_button(
-        label="변환된 CSV 파일 다운로드!",
+        label="변환된 CSV 파일 다운 받기",
         data=csv,
         file_name= file_name,
         mime='text/csv',
