@@ -41,8 +41,9 @@ if uploaded_files:
         result = chardet.detect(raw_data)
         # 추측된 인코딩으로 CSV 파일 읽기
         data = pd.read_csv(uploaded_file, encoding=result['encoding'])
-        st.write("파일명:", uploaded_file.name)
+        st.write('💻 상위 5개 데이터 출력')
         st.write(data.head(5))
+        
 
     def convert_df(df):
         # IMPORTANT: Cache the conversion to prevent computation on every rerun
@@ -50,6 +51,8 @@ if uploaded_files:
 
     csv = convert_df(data)
 
+    st.write('📝 업로드한 데이터의 인코딩 형식은',result['encoding'],'입니다.')
+    st.write("-----------------------------------------------------")
     st.download_button(
         label="변환된 CSV 파일 다운로드!",
         data=csv,
