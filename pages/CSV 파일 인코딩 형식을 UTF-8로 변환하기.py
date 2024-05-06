@@ -53,7 +53,7 @@ if uploaded_files:
     csv = convert_df(data)
 
     # 업로드된 파일의 확장자를 제거한 후 변환된 파일명에 .csv 확장자 추가
-    file_name = '(utf-8)' + uploaded_file.name.replace('.csv', '') + '.csv'
+    file_name = uploaded_file.name.replace('.csv', '') + '(utf-8) + .csv'
 
     st.write('📢**업로드한 데이터의 인코딩 형식은',result['encoding'],'입니다!**')
     st.write("-----------------------------------------------------")
